@@ -1,5 +1,7 @@
-import paho.mqtt.client as paho
+import random
 import time
+
+import paho.mqtt.client as paho
 
 # Connection details
 HOST = "localhost"
@@ -8,8 +10,6 @@ TIME_OUT = 60
 
 # Topic and data
 TOPIC = "sensors/temp/bedroom"
-
-temp = 24
 
 
 # Create connection
@@ -21,12 +21,15 @@ if client.connect(HOST, PORT, TIME_OUT):
 
 try:
     while True:
+        temp = random.random() * 100
+
         # Publish to the topic
         client.publish(
             TOPIC,
             temp,
             0
         )
+
         time.sleep(1)
 
 except KeyboardInterrupt as e:

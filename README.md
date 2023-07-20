@@ -55,3 +55,13 @@ mosquitto_pub -h localhost -t "sensors/temp/livingroom" -m "24"
 ```bash
 mosquitto_pub -h 172.27.22.238 -t "sensors/temp/bedroom" -m "27.5"
 ```
+
+## Automation with python scripts
+
+### Publisher
+
+### Subscriber
+
+### Live Stream
+
+<img src="/docs/output.gif">

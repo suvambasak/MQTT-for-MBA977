@@ -1,4 +1,14 @@
-# Message Queuing Telemetry Transport (MQTT) cheat sheet
+# MQTT Cheat Sheet
+
+## Table of Contents
+- [MQTT CLI](#install-mqtt-broker-and-client)
+    - [Broker setup](#broker-setup) 
+    - [Client setup](#client-setup)
+- [MQTT Automation with Python](#automation-with-python-scripts)
+    - [Setup](#setup)
+    - [Publisher script](#publisher)
+    - [Subscriber script](#subscriber)
+    - [Visualization from live stream](#visualization-from-live-stream)
 
 
 ## Install MQTT Broker and Client
@@ -58,10 +68,36 @@ mosquitto_pub -h 172.27.22.238 -t "sensors/temp/bedroom" -m "27.5"
 
 ## Automation with python scripts
 
+### Setup
+```bash
+pip install -r requirements.txt
+```
+```python
+# Connection details
+HOST = "localhost"
+PORT = 1883
+TIME_OUT = 60
+
+# Topic and data
+TOPIC = "sensors/temp/bedroom"
+```
+
 ### Publisher
+Execute the `publisher.py` script
+```bash
+python publisher.py
+```
 
 ### Subscriber
+Execute the `subscriber.py` script
+```bash
+python subscriber.py
+```
 
-### Live Stream
+### Visualization from Live Stream
+Execute `live.py` script
+```bash
+python live.py
+```
 
 <img src="/docs/output.gif">

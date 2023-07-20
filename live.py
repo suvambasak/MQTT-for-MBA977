@@ -6,41 +6,42 @@ import matplotlib.pyplot as plt
 import paho.mqtt.client as paho
 
 
+# Connection details
+HOST = "localhost"
+PORT = 1883
+TIME_OUT = 60
+
+# Topic and data
+TOPIC = "sensors/temp/bedroom"
+
+
 class LiveStream:
     def __init__(self) -> None:
-
+        self.client = None
         self.xs = []
         self.ys = []
-
-        # Connection details
-        self.HOST = "localhost"
-        self.PORT = 1883
-        self.TIME_OUT = 60
-
-        # Topic and data
-        self.TOPIC = "sensors/temp/bedroom"
 
         stream = threading.Thread(target=self.subscriber)
         stream.start()
 
     def subscriber(self):
         # Create connection and register handler
-        client = paho.Client()
-        client.on_message = self.message_handler
-        if client.connect(self.HOST, self.PORT, self.TIME_OUT):
+        self.client = paho.Client()
+        self.client.on_message = self.message_handler
+        if self.client.connect(HOST, PORT, TIME_OUT):
             print('Connection failed!')
             exit(-1)
 
         # Subscribe to the topic
-        client.subscribe(self.TOPIC)
+        self.client.subscribe(TOPIC)
 
         try:
-            client.loop_forever()
+            self.client.loop_forever()
 
         except KeyboardInterrupt as e:
             print('\nSTOP: Subscriber service.\n')
         finally:
-            client.disconnect()
+            self.client.disconnect()
 
     def message_handler(self, client, user_data, msg):
         self.ys.append(float(msg.payload.decode()))
@@ -79,6 +80,7 @@ if __name__ == '__main__':
         cache_frame_data=False
     )
 
-    manager = plt.get_current_fig_manager()
-    manager.full_screen_toggle()
+    # manager = plt.get_current_fig_manager()
+    # manager.full_screen_toggle()
     plt.show()
+    ls.client.disconnect()

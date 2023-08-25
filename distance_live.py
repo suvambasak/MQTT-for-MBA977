@@ -7,12 +7,12 @@ import paho.mqtt.client as paho
 
 
 # Connection details
-HOST = "localhost"
+HOST = "172.27.28.217"
 PORT = 1883
 TIME_OUT = 60
 
 # Topic and data
-TOPIC = "sensors/temp/bedroom"
+TOPIC = "sensors/dist_cm"
 
 
 class LiveStream:
@@ -65,11 +65,12 @@ if __name__ == '__main__':
         y = ys[-20:]
         ax.clear()
         ax.plot(x, y, 'o-r')
+        ax.set_ylim(0, 100)
 
         plt.xticks(rotation=45, ha='right')
         plt.subplots_adjust(bottom=0.30)
-        plt.title('Temperature over Time')
-        plt.ylabel('Temperature (C)')
+        plt.title('Distance over Time')
+        plt.ylabel('Distance (CM)')
         plt.xlabel('Time (H:M:S)')
 
     animated_plot = animation.FuncAnimation(

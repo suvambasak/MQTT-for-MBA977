@@ -51,7 +51,7 @@ mosquitto_sub -h localhost -t "sensors/temp/livingroom"
 ```
 ### Subscribe over LAN
 ```bash
-mosquitto_sub -h 172.27.22.238 -t "sensors/temp/bedroom"
+mosquitto_sub -h 172.27.28.217 -t "sensors/temp/bedroom"
 ```
 
 ### Publish
@@ -63,7 +63,7 @@ mosquitto_pub -h localhost -t "sensors/temp/livingroom" -m "24"
 ```
 ### Publish over LAN
 ```bash
-mosquitto_pub -h 172.27.22.238 -t "sensors/temp/bedroom" -m "27.5"
+mosquitto_pub -h 172.27.28.217 -t "sensors/temp/bedroom" -m "27.5"
 ```
 
 ## Automation with python scripts
@@ -95,9 +95,13 @@ python subscriber.py
 ```
 
 ### Visualization from Live Stream
-Execute `live.py` script
+Execute publisher script `distance_publisher.py` script
 ```bash
-python live.py
+python distance_publisher.py
+```
+Execute subscriber script `distance_live.py` script
+```bash
+python distance_live.py
 ```
 
 <img src="/docs/output.gif">

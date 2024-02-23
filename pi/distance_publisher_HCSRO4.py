@@ -6,7 +6,7 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
 # Connection details
-HOST = "172.27.28.217"
+HOST = "172.27.28.18"
 PORT = 1883
 TIME_OUT = 60
 
@@ -14,8 +14,8 @@ TIME_OUT = 60
 TOPIC = "sensors/dist_cm"
 
 # Pin setup
-TRIG = 4
-ECHO = 18
+TRIG = 26
+ECHO = 21
 GPIO.setup(TRIG, GPIO.OUT)
 GPIO.setup(ECHO, GPIO.IN)
 

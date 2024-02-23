@@ -7,7 +7,7 @@ import paho.mqtt.client as paho
 
 
 # Connection details
-HOST = "172.27.28.217"
+HOST = "172.27.28.18"
 PORT = 1883
 TIME_OUT = 60
 

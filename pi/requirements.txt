@@ -1,0 +1,4 @@
+mfrc522==0.0.7
+paho-mqtt==1.6.1
+RPi.GPIO==0.7.1
+spidev==3.6
